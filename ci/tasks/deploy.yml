@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_reousrce:
+  type: docker-image
+  source:
+    repository: allomov/deploy-worker
+    tag: latest
+
+run:
+  path: pipeline-repo/ci/scripts/deploy.sh
+  
+inputs:
+- name: pipeline-repo
+  
