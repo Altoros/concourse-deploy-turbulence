@@ -12,6 +12,11 @@ jobs:
     - get: pipeline-repo
   - task: deploy-turbulence
     file: pipeline-repo/ci/tasks/deploy.yml
+    params:
+      VAULT_ADDR: {{vault-address}}
+      VAULT_TOKEN: {{vault-token}}
+      FOUNDATION_NAME: {{foundation-name}}
+      PRODUCT_NAME: {{product-name}}
 
 - name: kill-turbulence
   plan:
@@ -19,3 +24,9 @@ jobs:
     - get: pipeline-repo
   - taks: kill-turbulence
     file: pipeline-repo/ci/tasks/kill.yml
+    params:
+      VAULT_ADDR: {{vault-address}}
+      VAULT_TOKEN: {{vault-token}}
+      FOUNDATION_NAME: {{foundation-name}}
+      PRODUCT_NAME: {{product-name}}
+
