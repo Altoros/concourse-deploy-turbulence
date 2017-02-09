@@ -1,5 +1,5 @@
 resources:
-  - name: pipeline-repo
+- name: pipeline-repo
   type: git
   check: 2m
   source:
