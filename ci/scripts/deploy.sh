@@ -23,15 +23,15 @@ bosh -n -d turbulence deploy $project_dir/manifests/turbulence.yml \
   --vars-store ./creds.yml
 # Store values from creds.yml to vault
 
+JSON=`ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < creds.yml`
 
-
-API_CA=`y2j creds.yml | jq -r '.turbulence_api_ca.ca'`
-API_CERTIFICATE=`y2j creds.yml | jq -r '.turbulence_api_ca.certificate' `
-API_PRIVATE_KEY=`y2j creds.yml | jq -r '.turbulence_api_ca.private_key' `
-API_CERT_CERTIFICATE=`y2j creds.yml | jq -r '.turbulence_api_cert.certificate' `
-API_CERT_PRIVATE_KEY=`y2j creds.yml | jq -r '.turbulence_api_cert.private_key' `
-API_CERT_CA=`y2j creds.yml | jq -r  '.turbulence_api_cert.ca' `
-TURBULENCE_API_PASSWORD=`y2j creds.yml | jq -r '.turbulence_api_ca.private_key' `
+API_CA=`echo $JSON | jq -r '.turbulence_api_ca.ca'`
+API_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_ca.certificate' `
+API_PRIVATE_KEY=`| jq -r '.turbulence_api_ca.private_key' `
+API_CERT_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_cert.certificate' `
+API_CERT_PRIVATE_KEY=`echo $JSON | jq -r '.turbulence_api_cert.private_key' `
+API_CERT_CA=`echo $JSON | jq -r  '.turbulence_api_cert.ca' `
+TURBULENCE_API_PASSWORD=`echo $JSON | jq -r '.turbulence_api_ca.private_key' `
 
 #vault write
 # EOF
