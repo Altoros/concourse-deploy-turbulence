@@ -26,22 +26,12 @@ JSON=`ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < creds
 
 API_CA=`echo $JSON | jq -r '.turbulence_api_ca.ca'`
 API_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_ca.certificate' `
-API_PRIVATE_KEY=`echo $JSON | jq -r '.turbulence_api_ca.private_key' `
 API_CERT_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_cert.certificate' `
-API_CERT_PRIVATE_KEY=`echo $JSON | jq -r '.turbulence_api_cert.private_key' `
 API_CERT_CA=`echo $JSON | jq -r  '.turbulence_api_cert.ca' `
 TURBULENCE_API_PASSWORD=`echo $JSON | jq -r '.turbulence_api_password'`
 set -x
-vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-ca  ca.ca="$API_CA" \
-                            ca.certificate="$API_CERTIFICATE" \
-                            ca.private_key="$API_PRIVATE_KEY" 
-
-vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-cert  \
-                            cert.ca="$API_CERT_CA" \
-                            cert.certificate="$API_CERT_CERTIFICATE" \
-                            cert.private_key="$API_CERT_PRIVATE_KEY" 
-
-vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-cert  \
-                           turbulence_api_password=$TURBULENCE_API_PASSWORD
+vault write secret/turbulence-$FOUNDATION_NAME-pros ca="$API_CA" \
+                            certificate="$API_CERTIFICATE" \
+                            turbulence-api-password=$TURBULENCE_API_PASSWORD
 
 # EOF
