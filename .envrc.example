@@ -1,0 +1,20 @@
+source_env ../..
+
+export PRODUCT_NAME=turbulence
+export PIPELINE_REPO=https://github.com/Altoros/concourse-deploy-turbulence.git
+
+
+export CONCOURSE_URI=http://x.x.x.x:xxxx
+export CONCOURSE_TARGET=
+export CONCOURSE_USER=username
+export CONCOURSE_PASSWORD=pass
+
+# Vault info
+export VAULT_ADDR=http://x.x.x.x:xxxx
+export VAULT_TOKEN=
+
+
+export PATH=$PATH:$PWD/common/bin
+
+                                                                                    
+
