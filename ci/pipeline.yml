@@ -22,7 +22,7 @@ jobs:
   plan:
   - aggregate:
     - get: pipeline-repo
-  - taks: kill-turbulence
+  - task: kill-turbulence
     file: pipeline-repo/ci/tasks/kill.yml
     params:
       VAULT_ADDR: {{vault-address}}
