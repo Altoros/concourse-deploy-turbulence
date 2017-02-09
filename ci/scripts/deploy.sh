@@ -12,10 +12,10 @@ bosh upload-release https://bosh.io/d/github.com/cppforlife/turbulence-release
 bosh -n -d turbulence deploy ./manifests/turbulence.yml \
   -v turbulence_api_ip=$(vault read --field=broker-ip $VAULT_HASH_PROPS  )$\
   -v director_ip=$BOSH_DIRECTOR_IP \
-  --var-file director_ssl_ca=$BOSH_DIRECTOR_SSL_CA \
-  -v director_client=$BOSH_DIRECTOR_CLIENT \
-  -v director_client_secret=$BOSH_DIRECTOR_CLIENT_SECRET \
+  --var-file director_ssl_ca=$DIRECTOR_SSL_CA \
+  -v director_client=$DIRECTOR_CLIENT \
+  -v director_client_secret=$DIRECTOR_CLIENT_SECRET \
+  --vars-store ./creds.yml
 
 
-#  --vars-store ./creds.yml
 # EOF
