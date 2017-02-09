@@ -33,5 +33,17 @@ API_CERT_PRIVATE_KEY=`echo $JSON | jq -r '.turbulence_api_cert.private_key' `
 API_CERT_CA=`echo $JSON | jq -r  '.turbulence_api_cert.ca' `
 TURBULENCE_API_PASSWORD=`echo $JSON | jq -r '.turbulence_api_ca.private_key' `
 
-#vault write
+vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-ca: \
+                            ca=$API_CA \
+                            certificate=$API_CERTIFICATE \
+                            private_key=$API_PRIVATE_KEY 
+
+vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-cert: \
+                            ca=$API_CERT_CA \
+                            certificate=$API_CERT_CERTIFICATE \
+                            private_key=$API_CERT_PRIVATE_KEY 
+
+vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-cert: \
+                           turbulence_api_password: $TURBULENCE_API_PASSWORD
+
 # EOF
