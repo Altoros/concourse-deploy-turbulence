@@ -30,8 +30,8 @@ API_CERT_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_cert.certificate' `
 API_CERT_CA=`echo $JSON | jq -r  '.turbulence_api_cert.ca' `
 TURBULENCE_API_PASSWORD=`echo $JSON | jq -r '.turbulence_api_password'`
 set -x
-vault write secret/turbulence-$FOUNDATION_NAME-pros ca="$API_CA" \
-                            certificate="$API_CERTIFICATE" \
+vault write secret/turbulence-$FOUNDATION_NAME-pros turbulence-ca="$API_CA" \
+                            turublence-certificate="$API_CERTIFICATE" \
                             turbulence-api-password=$TURBULENCE_API_PASSWORD
 
 # EOF
