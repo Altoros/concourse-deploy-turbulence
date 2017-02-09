@@ -3,6 +3,12 @@
 #
 set -xe
 
+
+project_dir=$(readlink -f "$(dirname $0)/../..")
+source $project_dir/common/utils/load-bosh-env.sh 
+
+export VAULT_HASH_PROPS=secret/turbulence-$FOUNDATION_NAME-pros
+
 body='
 {
   "Tasks": [{
