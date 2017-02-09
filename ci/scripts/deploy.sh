@@ -25,13 +25,13 @@ bosh -n -d turbulence deploy $project_dir/manifests/turbulence.yml \
 
 
 
-API_CA=`y2j creds.yml | jq -r {.turbulence_api_ca.ca}`
-API_CERTIFICATE=`y2j creds.yml | jq -r {.turbulence_api_ca.certificate} `
-API_PRIVATE_KEY=`y2j creds.yml | jq -r {.turbulence_api_ca.private_key} `
-API_CERT_CERTIFICATE=`y2j creds.yml | jq -r {.turbulence_api_cert.certificate} `
-API_CERT_PRIVATE_KEY=`y2j creds.yml | jq -r {.turbulence_api_cert.private_key} `
-API_CERT_CA=`y2j creds.yml | jq -r  {.turbulence_api_cert.ca} `
-TURBULENCE_API_PASSWORD=`y2j creds.yml | jq -r {.turbulence_api_ca.private_key} `
+API_CA=`y2j creds.yml | jq -r '.turbulence_api_ca.ca'`
+API_CERTIFICATE=`y2j creds.yml | jq -r '.turbulence_api_ca.certificate' `
+API_PRIVATE_KEY=`y2j creds.yml | jq -r '.turbulence_api_ca.private_key' `
+API_CERT_CERTIFICATE=`y2j creds.yml | jq -r '.turbulence_api_cert.certificate' `
+API_CERT_PRIVATE_KEY=`y2j creds.yml | jq -r '.turbulence_api_cert.private_key' `
+API_CERT_CA=`y2j creds.yml | jq -r  '.turbulence_api_cert.ca' `
+TURBULENCE_API_PASSWORD=`y2j creds.yml | jq -r '.turbulence_api_ca.private_key' `
 
 #vault write
 # EOF
