@@ -22,12 +22,12 @@ bosh -n -d turbulence deploy $project_dir/manifests/turbulence.yml \
   -v director_client_secret=$BOSH_CLIENT_SECRET \
   --vars-store ./creds.yml
 # Store values from creds.yml to vault
-
+set -x
 JSON=`ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < creds.yml`
-
+set +x
 API_CA=`echo $JSON | jq -r '.turbulence_api_ca.ca'`
 API_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_ca.certificate' `
-API_PRIVATE_KEY=`| jq -r '.turbulence_api_ca.private_key' `
+API_PRIVATE_KEY=`echo $JSON | jq -r '.turbulence_api_ca.private_key' `
 API_CERT_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_cert.certificate' `
 API_CERT_PRIVATE_KEY=`echo $JSON | jq -r '.turbulence_api_cert.private_key' `
 API_CERT_CA=`echo $JSON | jq -r  '.turbulence_api_cert.ca' `
