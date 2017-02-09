@@ -6,7 +6,7 @@ project_dir=$(readlink -f "$(dirname $0)/../..")
 source $project_dir/common/utils/load-bosh-env.sh 
 
 bosh upload-release https://bosh.io/d/github.com/cppforlife/turbulence-release
-export VAULT_HASH_PROPS=secret/bosh-$FOUNDATION_NAME-pros
+export VAULT_HASH_PROPS=secret/turbulence-$FOUNDATION_NAME-pros
 # vault write secret/turbulence-wdc1-prod-pros turbulence-api-ip
 
 bosh -n -d turbulence deploy $project_dir/manifests/turbulence.yml \
