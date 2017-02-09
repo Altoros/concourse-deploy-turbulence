@@ -38,11 +38,11 @@ vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-ca: \
                             private_key=$API_PRIVATE_KEY 
 
 vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-cert: \
-                            ca=$API_CERT_CA \
-                            certificate=$API_CERT_CERTIFICATE \
-                            private_key=$API_CERT_PRIVATE_KEY 
+                            ca="$API_CERT_CA" \
+                            certificate="$API_CERT_CERTIFICATE" \
+                            private_key="$API_CERT_PRIVATE_KEY" 
 
 vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-cert: \
-                           turbulence_api_password: $TURBULENCE_API_PASSWORD
+                           turbulence_api_password=$TURBULENCE_API_PASSWORD
 
 # EOF
