@@ -13,7 +13,7 @@ set -x
 bosh -n -d turbulence deploy $project_dir/manifests/turbulence.yml \
   -v turbulence_api_ip=$(vault read --field=turbulence-api-ip $VAULT_HASH_PROPS) \
   -v director_ip=$BOSH_URL \
-  --var-file director_ssl_ca=$DIRECTOR_SSL_CA \
+  --var-file director_ssl_ca=$BOSH_CA_CERT \
   -v director_client=$BOSH_CLIENT \
   -v director_client_secret=$BOSH_CLIENT_SECRET \
   --vars-store ./creds.yml
