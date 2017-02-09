@@ -11,7 +11,7 @@ export DIRECTOR_CA_CERT=./directorCA.pem
 
 
 echo "$BOSH_CA_CERT" > $DIRECTOR_CA_CERT
-set -x
+#set -x
 
 # Deploy
 bosh -n -d turbulence deploy $project_dir/manifests/turbulence.yml \
@@ -31,7 +31,7 @@ API_PRIVATE_KEY=`| jq -r '.turbulence_api_ca.private_key' `
 API_CERT_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_cert.certificate' `
 API_CERT_PRIVATE_KEY=`echo $JSON | jq -r '.turbulence_api_cert.private_key' `
 API_CERT_CA=`echo $JSON | jq -r  '.turbulence_api_cert.ca' `
-TURBULENCE_API_PASSWORD=`echo $JSON | jq -r '.turbulence_api_ca.private_key' `
+TURBULENCE_API_PASSWORD=`echo $JSON | jq -r '.turbulence_api_password'`
 
 vault write turbulence-$FOUNDATION_NAME-pros/turbulence-api-ca: \
                             ca=$API_CA \
