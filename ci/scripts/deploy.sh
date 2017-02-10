@@ -15,10 +15,12 @@ export DIRECTOR_CA_CERT=./directorCA.pem
 echo "$BOSH_CA_CERT" > $DIRECTOR_CA_CERT
 TURBULENCE_API_IP=$(vault read --field=turbulence-api-ip $VAULT_HASH_PROPS)
 
+BOSH_IP=$(echo $BOSH_URL | sed 's/https\:\/\///g')
+
 # Deploy
 bosh -n -d turbulence deploy $project_dir/manifests/turbulence.yml \
   -v turbulence_api_ip=$TURBULENCE_API_IP \
-  -v director_ip=$BOSH_URL \
+  -v director_ip=$BOSH_IP \
   --var-file director_ssl_ca=$DIRECTOR_CA_CERT \
   -v director_client=$BOSH_CLIENT \
   -v director_client_secret=$BOSH_CLIENT_SECRET \
