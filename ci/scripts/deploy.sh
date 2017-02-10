@@ -6,7 +6,7 @@ source $project_dir/common/utils/load-bosh-env.sh
 
 bosh upload-release https://bosh.io/d/github.com/cppforlife/turbulence-release
 
-export VAULT_HASH_PROPS=secret/$PRODUCT-$FOUNDATION_NAME-pros
+export VAULT_HASH_PROPS=secret/$PRODUCT_NAME-$FOUNDATION_NAME-pros
 export DIRECTOR_CA_CERT=./directorCA.pem
 
 # vault write secret/turbulence-wdc1-prod-pros turbulence-api-ip
