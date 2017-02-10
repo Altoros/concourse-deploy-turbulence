@@ -10,9 +10,9 @@ source $project_dir/common/utils/load-bosh-env.sh
 export VAULT_HASH_PROPS=secret/turbulence-$FOUNDATION_NAME-pros
 
 set -x
-TURBULENCE_BOSH_JOBS=$(vault read --format=json turbulence-bosh-jobs $VAULT_HASH_PROPS | jq .turbulence-bosh-jobs)
-TURBULENCE_API_PASSWORD=$(vault read --format=json turbulence-ca $VAULT_HASH_PROPS | jq .turbulence-ca)
-TURBULENCE_API_IP=$(vault read --format=json turbulence-api-ip $VAULT_HASH_PROPS | jq .turbulence-api-ip )
+TURBULENCE_BOSH_JOBS=$(vault read --format=json secret/turbulence-bosh-jobs $VAULT_HASH_PROPS | jq .turbulence-bosh-jobs)
+TURBULENCE_API_PASSWORD=$(vault read --format=json secret/turbulence-ca $VAULT_HASH_PROPS | jq .turbulence-ca)
+TURBULENCE_API_IP=$(vault read --format=json secret/turbulence-api-ip $VAULT_HASH_PROPS | jq .turbulence-api-ip )
 echo $TURBULENCE_BOSH_JOBS
 echo $TURBULENCE_API_IP
 exit 0;
