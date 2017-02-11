@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 ### Load env
+set -e
 project_dir=$(readlink -f "$(dirname $0)/../..")
 source $project_dir/common/utils/load-bosh-env.sh 
 
