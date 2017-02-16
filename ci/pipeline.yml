@@ -3,7 +3,9 @@ resources:
   type: git
   check: 2m
   source:
-    uri: https://github.com/Altoros/concourse-deploy-turbulence.git
+    uri: {{pipeline-repo}}
+    branch: {{pipeline-repo-brunch}}
+    private_key: {{pipeline-repo-private-key}}
 
 jobs:
 - name: deploy-turbulence

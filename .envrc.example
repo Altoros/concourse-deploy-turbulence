@@ -2,6 +2,7 @@ source_env ../..
 
 export PRODUCT_NAME=turbulence
 export PIPELINE_REPO=https://github.com/Altoros/concourse-deploy-turbulence.git
+export PIPELINE_REPO_PRIVATE_KEY_PATH=..
 
 
 export CONCOURSE_URI=http://x.x.x.x:xxxx
