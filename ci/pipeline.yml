@@ -10,8 +10,7 @@ resources:
 jobs:
 - name: deploy-turbulence
   plan:
-  - aggregate:
-    - get: pipeline-repo
+  - get: pipeline-repo
   - task: deploy-turbulence
     file: pipeline-repo/ci/tasks/deploy.yml
     params:
@@ -22,8 +21,7 @@ jobs:
 
 - name: kill-turbulence
   plan:
-  - aggregate:
-    - get: pipeline-repo
+  - get: pipeline-repo
   - task: kill-turbulence
     file: pipeline-repo/ci/tasks/kill.yml
     params:
