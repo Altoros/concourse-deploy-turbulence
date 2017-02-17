@@ -1,0 +1,4 @@
+{
+  "turbulence-api-ip": "x.x.x.x",
+  "turbulence-bosh-jobs": "cf-wdc1-prod:cloud_controller_worker-partition,cf-scdc1-prod:doppler-partition"
+}
