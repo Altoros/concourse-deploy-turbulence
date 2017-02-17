@@ -7,7 +7,7 @@ source $project_dir/common/utils/load-bosh-env.sh
 
 bosh upload-release https://bosh.io/d/github.com/cppforlife/turbulence-release
 
-export VAULT_HASH_PROPS=secret/$PRODUCT_NAME-$FOUNDATION_NAME-pros
+export VAULT_HASH_PROPS=secret/$PRODUCT_NAME-$FOUNDATION_NAME-props
 export DIRECTOR_CA_CERT=./directorCA.pem
 
 # vault write secret/turbulence-wdc1-prod-pros turbulence-api-ip
@@ -36,7 +36,7 @@ API_CERT_CERTIFICATE=`echo $JSON | jq -r '.turbulence_api_cert.certificate' `
 API_CERT_CA=`echo $JSON | jq -r  '.turbulence_api_cert.ca' `
 TURBULENCE_API_PASSWORD=`echo $JSON | jq -r '.turbulence_api_password'`
 
-vault write secret/$PRODUCT_NAME-$FOUNDATION_NAME-pros $PRODUCT_NAME-ca="$API_CA" \
+vault write secret/$PRODUCT_NAME-$FOUNDATION_NAME-props $PRODUCT_NAME-ca="$API_CA" \
                             $PRODUCT_NAME-api-ip="$TURBULENCE_API_IP" \
                             $PRODUCT_NAME-certificate="$API_CERTIFICATE" \
                             $PRODUCT_NAME-api-password=$TURBULENCE_API_PASSWORD
