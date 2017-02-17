@@ -4,7 +4,7 @@ resources:
   check: 2m
   source:
     uri: {{pipeline-repo}}
-    branch: {{pipeline-repo-brunch}}
+    branch: {{pipeline-repo-branch}}
     private_key: {{pipeline-repo-private-key}}
 
 jobs:
